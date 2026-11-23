@@ -1,0 +1,22 @@
+# Render deployment blueprint for SandboxMCP
+services:
+  - type: web
+    name: sandboxmcp
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: SANDBOX_MCP_TRANSPORT
+        value: http
+      - key: SANDBOX_DB_URL
+        sync: false
+      - key: SANDBOX_LOG_FILE
+        sync: false
+      - key: SANDBOX_DOCKER_IMAGE
+        value: python:3.14-slim
+      - key: SANDBOX_DOCKER_MEMORY_MB
+        value: "256"
+      - key: SANDBOX_DOCKER_CPU_CORES
+        value: "0.5"
+      - key: SANDBOX_TEST_TIMEOUT_SECONDS
+        value: "30"

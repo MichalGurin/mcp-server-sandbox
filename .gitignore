@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment variables (keep .env.example as the committed template)
+.env
+.env.*
+!.env.example
+
+# IDE / editor
+.idea/
+.vscode/
+.cursor/
+
+# OS files
+.DS_Store
+
+# Logs
+*.log

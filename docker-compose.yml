@@ -1,0 +1,22 @@
+services:
+  sandboxmcp:
+    build: .
+    container_name: sandboxmcp
+    ports:
+      - "8000:8000"
+    environment:
+      - SANDBOX_MCP_TRANSPORT=http
+      - SANDBOX_DB_URL=sqlite:////data/app.db
+      - SANDBOX_LOG_FILE=/var/log/sandbox/service.log
+      - SANDBOX_DOCKER_IMAGE=python:3.14-slim
+      - SANDBOX_DOCKER_MEMORY_MB=256
+      - SANDBOX_DOCKER_CPU_CORES=0.5
+      - SANDBOX_TEST_TIMEOUT_SECONDS=30
+    volumes:
+      - sandbox_data:/data
+      - sandbox_logs:/var/log/sandbox
+    restart: unless-stopped
+
+volumes:
+  sandbox_data:
+  sandbox_logs:
