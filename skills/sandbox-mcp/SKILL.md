@@ -85,5 +85,5 @@ Prefer discovering actual runtime values through the `sys://health`, `db://schem
 
 ## References
 
-- `skills/sandbox-mcp/references/root-cause-workflow.md` — detailed step-by-step debugging
-  workflow, example tool calls, and expected outputs.
+- `references/root-cause-workflow.md` — detailed step-by-step debugging workflow, example tool
+  calls, and expected outputs.
