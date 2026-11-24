@@ -101,6 +101,33 @@ Add to `claude_desktop_config.json` or Cursor MCP settings:
 }
 ```
 
+## Agent Skill
+
+The MCP server is packaged as an installable agent skill that teaches AI agents **when** and **how**
+to use its safe debugging tools, turning it into something installable into Claude Code, Cursor,
+Copilot and 20+ other agents.
+
+- **Skill location:** [`skills/sandbox-mcp/SKILL.md`](skills/sandbox-mcp/SKILL.md) (with detailed
+  workflow in [`skills/sandbox-mcp/references/root-cause-workflow.md`](skills/sandbox-mcp/references/root-cause-workflow.md))
+- **Paired with:** the `sandboxmcp` MCP server (tools: `run_isolated_test`, `query_readonly_db`,
+  `tail_service_logs`; resources: `sys://health`, `db://schema`, `logs://recent-errors`;
+  prompts: `/root_cause_analysis`, `/generate_migration_plan`)
+
+### Install the skill
+
+- **Claude Code:** copy the skill into your project or personal skills directory:
+  - Project: `.claude/skills/sandbox-mcp/SKILL.md`
+  - Personal: `~/.claude/skills/sandbox-mcp/SKILL.md`
+  Then invoke with `/sandbox-mcp`, or let Claude auto-select it.
+- **Agent Skills–compatible clients** (Cursor, Copilot, Windsurf, etc.): import the
+  `skills/sandbox-mcp/` directory as a skill package.
+
+### Why pair them
+
+The MCP server enforces the hard guarantees (read-only SQL guardrails, ephemeral sandbox with
+limits, strict timeouts), while the skill enforces the safe workflow (context → investigate →
+reproduce → fix) and tells the agent when to reach for those tools.
+
 ## Features
 
 - Sandboxed Model Context Protocol (MCP) server enabling AI coding agents to inspect live database schemas, parse application logs, and execute unit tests inside ephemeral Docker containers.

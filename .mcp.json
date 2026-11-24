@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sandboxmcp": {
+      "command": "uv",
+      "args": ["run", "sandboxmcp"],
+      "env": {}
+    }
+  }
+}
